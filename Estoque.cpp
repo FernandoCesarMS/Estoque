@@ -4,6 +4,24 @@
 
 void Estoque::add_mercadoria(const std::string &mercadoria, unsigned int qtd)
 {
+    Mercadoria merc = *new Mercadoria(mercadoria, qtd);
+    int jaExiste = 0;
+
+    for (int i = 0; i < estoque.size(); i++)
+    {
+        if (estoque[i].nome == mercadoria)
+        {
+            jaExiste = 1;
+            estoque[i].quantidade += qtd;
+        }
+    }
+
+    if (jaExiste == 0)
+    {
+        estoque.push_back(merc);
+        estoqueOrdenado.push_back(mercadoria);
+        sort(estoqueOrdenado.begin(), estoqueOrdenado.end());
+    }
 }
 
 void Estoque::sub_mercadoria(const std::string &mercadoria, unsigned int qtd)
