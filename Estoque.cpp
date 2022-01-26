@@ -28,6 +28,27 @@ Estoque &Estoque::operator-=(const Estoque &rhs)
 
 bool operator<(Estoque &lhs, Estoque &rhs)
 {
+
+    for (int i = 0; i < lhs.estoque.size(); i++)
+    {
+        bool existe = false, ehMaior = false;
+        for (int j = 0; j < rhs.estoque.size(); j++)
+        {
+            if (lhs.estoque[i].nome == rhs.estoque[j].nome)
+            {
+                existe = true;
+                if (lhs.estoque[i].quantidade < rhs.estoque[j].quantidade)
+                {
+                    ehMaior = true;
+                }
+            }
+        }
+        if (existe == false || ehMaior == false)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 bool operator>(Estoque &lhs, Estoque &rhs)
