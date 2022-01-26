@@ -24,6 +24,17 @@ Estoque &Estoque::operator+=(const Estoque &rhs)
 
 Estoque &Estoque::operator-=(const Estoque &rhs)
 {
+    for (int i = 0; i < rhs.estoque.size(); i++)
+    {
+        for (int j = 0; j < this->estoque.size(); j++)
+        {
+            if (rhs.estoque[i].nome == this->estoque[j].nome)
+            {
+                this->estoque[j].quantidade -= rhs.estoque[i].quantidade;
+            }
+        }
+    }
+    return *this;
 }
 
 bool operator<(Estoque &lhs, Estoque &rhs)
