@@ -12,6 +12,17 @@ void Estoque::sub_mercadoria(const std::string &mercadoria, unsigned int qtd)
 
 unsigned int Estoque::get_qtd(const std::string &mercadoria) const
 {
+    int retorno = 0;
+
+    for (int i = 0; i < estoque.size(); i++)
+    {
+        if (estoque[i].nome == mercadoria)
+        {
+            retorno = estoque[i].quantidade;
+        }
+    }
+
+    return retorno;
 }
 
 void Estoque::imprime_estoque() const
