@@ -20,6 +20,25 @@ void Estoque::imprime_estoque() const
 
 Estoque &Estoque::operator+=(const Estoque &rhs)
 {
+    for (int i = 0; i < rhs.estoque.size(); i++)
+    {
+        int adicionou = 0;
+        for (int j = 0; j < this->estoque.size(); j++)
+        {
+            if (rhs.estoque[i].nome == this->estoque[j].nome)
+            {
+                this->estoque[j].quantidade += rhs.estoque[i].quantidade;
+                adicionou++;
+            }
+        }
+        if (adicionou == 0)
+        {
+            this->estoque.push_back(rhs.estoque[i]);
+            this->estoqueOrdenado.push_back(rhs.estoque[i].nome);
+            sort(estoqueOrdenado.begin(), estoqueOrdenado.end());
+        }
+    }
+    return *this;
 }
 
 Estoque &Estoque::operator-=(const Estoque &rhs)
