@@ -16,6 +16,19 @@ unsigned int Estoque::get_qtd(const std::string &mercadoria) const
 
 void Estoque::imprime_estoque() const
 {
+
+    for (int i = 0; i < estoqueOrdenado.size(); i++)
+    {
+
+        for (int j = 0; j < estoque.size(); j++)
+        {
+            if (estoqueOrdenado[i] == estoque[j].nome)
+            {
+                std::cout << estoque[j].nome << ", " << estoque[j].quantidade
+                          << std::endl;
+            }
+        }
+    }
 }
 
 Estoque &Estoque::operator+=(const Estoque &rhs)
